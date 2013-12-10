@@ -4,7 +4,7 @@ set bs=2                " Allow backspacing over everything in insert mode
 set ai                  " Always set auto-indenting on
 set history=50          " keep 50 lines of command history
 set ruler               " Show the cursor position all the time
-set background=dark	    " I like dark terminals
+set background=dark     " I like dark terminals
 set viminfo='20,\"500   " Keep a .viminfo file.
 set laststatus=2        " Show status line always
 set ruler
@@ -22,7 +22,7 @@ noremap <C-n> :nohl<CR>
 vnoremap <C-n> :nohl<CR>
 inoremap <C-n> :nohl<CR>
 
-" Quicksave command
+" Quicksave command (BUG: destroys the color of powerline)
 noremap <C-Y> :update<CR>
 vnoremap <C-Y> <C-C>:update<CR>
 inoremap <C-Y> <C-O>:update<CR>
@@ -30,14 +30,6 @@ inoremap <C-Y> <C-O>:update<CR>
 " Quick quit command
 noremap <Leader>e :quit<CR>  " Quit current window
 noremap <Leader>E :qa!<CR>   " Quit all windows
-
-" Bind Ctrl+<movement> keys to move around the windows, instead of using 
-" Ctrl+w + <movement>
-" Every unnecessary keystroke that can be saved is good for your health :)
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-map <C-h> <C-w>h
 
 " Open a new tab
 map <Leader>t <esc>:tabnew<CR>
@@ -60,8 +52,8 @@ set nowritebackup
 set noswapfile
 
 " Reload vimrc automaticly after saving
-autocmd! bufwritepost .vimrc source %
-
+autocmd bufwritepost .vimrc nested source %
+"asd
 " Showing line numbers and length
 set number " show line numbers
 set tw=79  " width of document
