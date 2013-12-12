@@ -1,29 +1,27 @@
 scriptencoding utf-8
-set nocompatible        " Use Vim defaults (much better!)
-set bs=2                " Allow backspacing over everything in insert mode
 set ai                  " Always set auto-indenting on
-set history=50          " keep 50 lines of command history
-set ruler               " Show the cursor position all the time
 set background=dark     " I like dark terminals
-set viminfo='20,\"500   " Keep a .viminfo file.
+set bs=2                " Allow backspacing over everything in insert mode
+set history=50          " keep 50 lines of command history
 set laststatus=2        " Show status line always
-set ruler
-set number
+set nocompatible        " Use Vim defaults (much better!)
+set ruler               " Show the cursor position all the time
+set viminfo='20,\"500   " Keep a .viminfo file.
 
 " Rebind <Leader> key
-" I like to have it here becuase it is easier to reach than the default and
+" I like to have it here because it is easier to reach than the default and
 " it is next to ``m`` and ``n`` which I use for navigating between tabs.
 let mapleader = ","
 
 " Bind nohl
 " Removes highlight of your last search
 " ``<C>`` stands for ``CTRL`` and therefore ``<C-n>`` stands for ``CTRL+n``
-noremap <C-n> :nohl<CR>
+noremap  <C-n> :nohl<CR>
 vnoremap <C-n> :nohl<CR>
 inoremap <C-n> :nohl<CR>
 
-" Quicksave command (BUG: destroys the color of powerline)
-noremap <C-Y> :update<CR>
+" Quicksave command 
+noremap  <C-Y> :update<CR>
 vnoremap <C-Y> <C-C>:update<CR>
 inoremap <C-Y> <C-O>:update<CR>
 
@@ -38,6 +36,12 @@ map <Leader>t <esc>:tabnew<CR>
 map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
 
+" easier moving of code blocks
+" Try to go into visual mode (v), thenselect several lines of code here and
+" then press ``>`` several times.
+vnoremap < <gv  " better indentation
+vnoremap > >gv  " better indentation
+
 " Nice sort function
 map sort function to a key
 vnoremap <Leader>s :sort<CR>
@@ -48,19 +52,19 @@ nmap Q gqap
 
 " I REALLY hate those vim backup files
 set nobackup
-set nowritebackup
 set noswapfile
+set nowritebackup
 
 " Reload vimrc automaticly after saving
 autocmd bufwritepost .vimrc nested source %
-"asd
+
 " Showing line numbers and length
 set number " show line numbers
 set tw=79  " width of document
 set nowrap " don't automatically wrap on load
 set fo-=t  " don't automatically wrap on typing
 set colorcolumn=80 
-"set ColorColumn ctermbg=233
+highlight ColorColumn ctermbg=7
 
 " Do copy and paste the way I expect
 set pastetoggle=<F2>
@@ -72,11 +76,11 @@ syntax on
 filetype plugin indent on
 
 " Real programmers don't use TABs but spaces
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set shiftround
 set expandtab
+set shiftround
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
 
 "Set color scheme
 set t_Co=256
