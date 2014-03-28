@@ -23,8 +23,13 @@ inoremap <C-n> :nohl<CR>
 
 " Quicksave command 
 noremap  <C-Y> :update<CR>
-vnoremap <C-Y> <C-C>:update<CR>
-inoremap <C-Y> <C-O>:update<CR>
+vnoremap <C-Y> <esc>:update<CR>
+inoremap <C-Y> <esc>:update<CR>
+
+" Undo
+noremap  <C-z> :u<CR>
+vnoremap <C-z> <C-C>:u<CR>
+inoremap <C-z> <C-O>:u<CR>
 
 " Quick quit command
 noremap <Leader>e :quit<CR>  " Quit current window
@@ -69,8 +74,8 @@ set number " show line numbers
 set tw=79  " width of document
 set nowrap " don't automatically wrap on load
 set fo-=t  " don't automatically wrap on typing
-"set colorcolumn=80 
-"highlight ColorColumn ctermbg=7
+" set colorcolumn=80 
+" highlight ColorColumn ctermbg=7
 
 " Do copy and paste the way I expect
 set pastetoggle=<F2>
