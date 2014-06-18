@@ -60,6 +60,9 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/opt/bin:/usr/x86_64-pc-linux-gnu/gcc-
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
+# I want chromium as my default browser
+export BROWSER="/usr/bin/chromium"
+
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
