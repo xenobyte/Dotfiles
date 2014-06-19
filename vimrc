@@ -66,8 +66,17 @@ set nobackup
 set noswapfile
 set nowritebackup
 
+" search options
+set hlsearch        " highlight results
+set incsearch       " search as you type
+set ignorecase      " case insensitive
+set smartcase       " if search contains upper case letters, search case sensitive
+
 " Reload vimrc automaticly after saving
 autocmd bufwritepost .vimrc nested source %
+
+" Reload files if changed outside of vim
+set autoread
 
 " Showing line numbers and length
 set number " show line numbers
@@ -82,10 +91,11 @@ set pastetoggle=<F2>
 "set clipboard=unnamend
 
 " Handle Plugins the easy way
-execute pathogen#infect()
+filetype off
+call pathogen#infect()
 call pathogen#helptags()
-syntax on
 filetype plugin indent on
+syntax on
 
 " enable code completion
 autocmd FileType python set omnifunc=pythoncomplete#Complete
