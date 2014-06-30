@@ -7,7 +7,31 @@ set laststatus=2        " Show status line always
 set nocompatible        " Use Vim defaults (much better!)
 set ruler               " Show the cursor position all the time
 set viminfo='20,\"500   " Keep a .viminfo file.
+filetype off
 
+"
+" Handle plugins with Vundle
+"
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" I like this powerline
+Bundle 'Lokaltog/powerline'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+"Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+"Plugin 'L9'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 " Rebind <Leader> key
 " I like to have it here because it is easier to reach than the default and
@@ -26,7 +50,7 @@ noremap  <C-Y> :update<CR>
 vnoremap <C-Y> <esc>:update<CR>
 inoremap <C-Y> <esc>:update<CR>
 
-" Undo
+" Undo with Ctrl+z
 noremap  <C-z> :u<CR>
 vnoremap <C-z> <C-C>:u<CR>
 inoremap <C-z> <C-O>:u<CR>
@@ -44,9 +68,6 @@ map <C-w> <esc>:close<CR>
 " Easier moving between tabs
 map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
-
-" Code completation like eclipse or netbeans
-inoremap <C-space> <C-p>
 
 " easier moving of code blocks Try to go into visual mode (v), thenselect
 " several lines of code here and then press ``>`` several times.
@@ -78,6 +99,9 @@ autocmd bufwritepost .vimrc nested source %
 " Reload files if changed outside of vim
 set autoread
 
+" special characters in powerline
+let g:Powerline_stl_path_style = 'filename'
+
 " Showing line numbers and length
 set number " show line numbers
 set tw=79  " width of document
@@ -89,21 +113,6 @@ set fo-=t  " don't automatically wrap on typing
 " Do copy and paste the way I expect
 set pastetoggle=<F2>
 "set clipboard=unnamend
-
-" Handle Plugins the easy way
-filetype off
-call pathogen#infect()
-call pathogen#helptags()
-filetype plugin indent on
-syntax on
-
-" enable code completion
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-set ofu=syntaxcomplete#Complete
-
-" use tab to avoid the nasty C-X C-O usage of code completion
-" you need to install supertab to use this!
-let g:SuperTabDefaultCompletionType = "context"
 
 " Real programmers don't use TABs but spaces
 set expandtab
